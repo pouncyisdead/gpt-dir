@@ -1,0 +1,9 @@
+{
+  "exclude": ["dist/"],
+  "fmt": {
+    "exclude": ["!dist/scripts"],
+    "options": {
+      "singleQuote": true
+    }
+  }
+}

@@ -1,10 +1,12 @@
 # **TypeScript Directory Converter - Recreation Guide**
 
------------------------------------------------------
+---
 
 ## **🎯 Project Overview**
 
-A Node.js CLI tool that converts directories into structured text files optimized for AI processing, with smart filtering, visual trees, and content processing options.
+A Node.js CLI tool that converts directories into structured text files
+optimized for AI processing, with smart filtering, visual trees, and content
+processing options.
 
 ## **📦 Project Setup**
 
@@ -12,7 +14,6 @@ A Node.js CLI tool that converts directories into structured text files optimize
 npm init -y
 npm add typescript @types/node tsx --save-dev
 npm add commander chalk cli-progress mime-types
-
 ```
 
 ## **🏗️ Core Architecture**
@@ -62,7 +63,6 @@ interface FileStats {
   fileTypes: Record<string, number>;
   totalSize: number;
 }
-
 ```
 
 ## **🔧 Key Features to Implement**
@@ -94,13 +94,13 @@ tsx src/gpt-dir.ts -i ./project -o ./output
 tsx src/gpt-dir.ts -i ./src -i ./docs -o ./output --minify false --tree
 # Multiple directories
 tsx src/gpt-dir.ts -i ./frontend -i ./backend -o ./combined
-
 ```
 
 **Boolean Options Logic:**
 
 - Default: `minify=true, escape=true, tree=true`
-- `--minify` \= enable, `--minify true` \= enable, `--minify false` \= disable, `-m false` \= disable
+- `--minify`\= enable, `--minify true`\= enable, `--minify false`\=
+  disable, `-m false`\= disable
 - Same pattern for `--escape` and `--tree`
 
 ## **📊 Output Format**
@@ -138,7 +138,6 @@ Size: 23.45 KB
 === END FILES ===
 
 === END CONVERSION ===
-
 ```
 
 ## **⚡ Implementation Tips**
@@ -150,4 +149,5 @@ Size: 23.45 KB
 - Use async/await for file operations
 - Generate statistics and timing information
 
-This guide provides a blueprint for recreating the directory converter as a modern TypeScript project with all the features we developed.
+This guide provides a blueprint for recreating the directory converter as a
+modern TypeScript project with all the features we developed.

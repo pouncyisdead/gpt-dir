@@ -12,6 +12,7 @@ export default [
     languageOptions: {
       globals: {
         ...globals.node,
+        Deno: 'readonly',
       },
       parser: tsparser,
       parserOptions: {

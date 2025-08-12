@@ -1,11 +1,15 @@
 # GPT Directory Converter
 
-A powerful Node.js CLI tool that converts directories into structured text files optimized for AI processing, with smart filtering, visual trees, and content processing options.
+A powerful Node.js CLI tool that converts directories into structured text files
+optimized for AI processing, with smart filtering, visual trees, and content
+processing options.
 
 ## 🚀 Features
 
-- **Smart File Filtering**: Automatically excludes binaries, `node_modules`, `.git`, and other unwanted files
-- **Visual Directory Trees**: Unicode-based folder structure with emoji file type icons
+- **Smart File Filtering**: Automatically excludes binaries, `node_modules`,
+  `.git`, and other unwanted files
+- **Visual Directory Trees**: Unicode-based folder structure with emoji file
+  type icons
 - **Content Processing**: Minification and character escaping options
 - **Progress Tracking**: Real-time progress bars and detailed statistics
 - **Multiple Input Support**: Process multiple directories in a single run
@@ -43,9 +47,11 @@ npm run start -- -i ./project -o ./output --minify false --tree --clean
 ### CLI Options
 
 - `-i, --input <dirs...>`: Input directories to convert (required)
-- `-o, --output <dir>`: Output directory for converted files (default: './output')
-- `--minify [value]`: Minify content by removing extra whitespace (default: true)
-- `--escape [value]`: Escape special characters for AI safety (default: true)  
+- `-o, --output <dir>`: Output directory for converted files (default:
+  './output')
+- `--minify [value]`: Minify content by removing extra whitespace (default:
+  true)
+- `--escape [value]`: Escape special characters for AI safety (default: true)
 - `--tree [value]`: Include visual directory tree in output (default: true)
 - `--clean`: Clean output directory before conversion
 - `-h, --help`: Display help information
@@ -53,6 +59,7 @@ npm run start -- -i ./project -o ./output --minify false --tree --clean
 ### Boolean Options
 
 Boolean options support multiple formats:
+
 - `--minify` or `--minify true` - Enable
 - `--minify false` - Disable
 - `-m false` - Disable (short form)
@@ -95,21 +102,24 @@ Size: 1024 bytes, Type: .ts
 ## 🎯 File Processing
 
 ### Included Files
+
 - Text files (`.txt`, `.md`, `.json`, etc.)
 - Source code files (`.js`, `.ts`, `.py`, `.java`, etc.)
 - Configuration files (`package.json`, `tsconfig.json`, etc.)
 - Documentation files
 
 ### Excluded Files/Directories
+
 - Binary files (executables, images, videos, archives)
 - `node_modules`, `.git`, `.DS_Store`
 - Files larger than 1MB
 - Hidden files and directories (starting with `.`)
 
 ### File Type Icons
+
 - 📁 Directories
 - 🟨 JavaScript files
-- 🔷 TypeScript files  
+- 🔷 TypeScript files
 - ⚛️ React components
 - 🌐 HTML files
 - 🎨 CSS/SCSS files

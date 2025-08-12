@@ -1,6 +1,7 @@
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import { FileProcessor } from './file-processor';
+import * as console from 'node:console';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
+import { FileProcessor } from './file-processor.ts';
 
 export class TreeGenerator {
   private fileProcessor = new FileProcessor();

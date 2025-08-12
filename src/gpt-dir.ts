@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
 import chalk from 'chalk';
-import * as path from 'path';
-import * as fs from 'fs/promises';
-import { ConversionOptions } from './types';
-import { DirectoryConverter } from './converter';
+import { Command } from 'commander';
+import console from 'node:console';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import process from 'node:process';
+import { DirectoryConverter } from './converter.ts';
+import { ConversionOptions } from './types.ts';
 
 const program = new Command();
 
@@ -87,7 +89,10 @@ program
       if (conversionOptions.clean) {
         console.log(chalk.yellow('🧹 Cleaning output directory...'));
         try {
-          await fs.rm(conversionOptions.outputDir, { recursive: true, force: true });
+          await fs.rm(conversionOptions.outputDir, {
+            recursive: true,
+            force: true,
+          });
         } catch (error) {
           // Directory might not exist, that's OK
           console.warn(chalk.red(`❌ Warn: Directory might not exist`));

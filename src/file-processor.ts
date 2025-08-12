@@ -1,6 +1,7 @@
-import * as fs from 'fs/promises';
-import * as path from 'path';
+import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 import * as mime from 'mime-types';
+import * as console from 'node:console';
 
 export class FileProcessor {
   private readonly maxFileSize = 1024 * 1024; // 1MB
