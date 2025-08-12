@@ -54,8 +54,9 @@ class TreeGenerator {
             }
             try {
                 const items = await fs.readdir(rootPath);
-                const filteredItems = items.filter(item => {
-                    return !this.fileProcessor.shouldExcludeFile(item) && !this.fileProcessor.shouldExcludeDirectory(item);
+                const filteredItems = items.filter((item) => {
+                    return (!this.fileProcessor.shouldExcludeFile(item) &&
+                        !this.fileProcessor.shouldExcludeDirectory(item));
                 });
                 // Sort items: directories first, then files
                 const sortedItems = await this.sortItems(rootPath, filteredItems);
@@ -68,6 +69,7 @@ class TreeGenerator {
             }
             catch (error) {
                 // Skip directories we can't read
+                console.warn(error);
             }
         }
         return result;
@@ -91,7 +93,7 @@ class TreeGenerator {
                 return 1;
             return a.name.localeCompare(b.name);
         })
-            .map(item => item.name);
+            .map((item) => item.name);
     }
     getFileIcon(fileName) {
         const ext = path.extname(fileName).toLowerCase();
@@ -121,14 +123,18 @@ class TreeGenerator {
             '.rs': '🦀',
             '.sh': '💻',
             '.bat': '💻',
-            '.sql': '🗃️'
+            '.sql': '🗃️',
         };
         // Configuration files
         const configFiles = [
-            'package.json', 'tsconfig.json', 'webpack.config.js',
-            'vite.config.js', 'tailwind.config.js', '.env'
+            'package.json',
+            'tsconfig.json',
+            'webpack.config.js',
+            'vite.config.js',
+            'tailwind.config.js',
+            '.env',
         ];
-        if (configFiles.some(config => fileName.includes(config))) {
+        if (configFiles.some((config) => fileName.includes(config))) {
             return '🔧';
         }
         return iconMap[ext] || '📄';

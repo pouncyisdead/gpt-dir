@@ -21,7 +21,7 @@ export class DirectoryConverter {
       processedFiles: 0,
       skippedFiles: 0,
       fileTypes: {},
-      totalSize: 0
+      totalSize: 0,
     };
 
     const allFiles: ProcessedFile[] = [];
@@ -51,7 +51,7 @@ export class DirectoryConverter {
           format: chalk.cyan('{bar}') + ' | {percentage}% | {value}/{total} files',
           barCompleteChar: '█',
           barIncompleteChar: '░',
-          hideCursor: true
+          hideCursor: true,
         });
         this.progressBar.start(files.length, 0);
       }
@@ -66,12 +66,12 @@ export class DirectoryConverter {
     }
 
     const endTime = new Date();
-    
+
     // Generate output file
     const outputContent = this.generateOutput(options, stats, allFiles, tree, startTime, endTime);
     const outputFileName = `conversion_${new Date().toISOString().replace(/[:.]/g, '-')}.txt`;
     const outputPath = path.join(options.outputDir, outputFileName);
-    
+
     await fs.writeFile(outputPath, outputContent, 'utf8');
 
     console.log(chalk.green(`✅ Conversion completed!`));
@@ -84,7 +84,7 @@ export class DirectoryConverter {
       files: allFiles,
       tree,
       startTime,
-      endTime
+      endTime,
     };
   }
 
@@ -94,7 +94,7 @@ export class DirectoryConverter {
     const traverse = async (currentPath: string): Promise<void> => {
       try {
         const items = await fs.readdir(currentPath);
-        
+
         for (const item of items) {
           const itemPath = path.join(currentPath, item);
           const stats = await fs.stat(itemPath);
@@ -111,6 +111,7 @@ export class DirectoryConverter {
         }
       } catch (error) {
         console.warn(chalk.yellow(`Warning: Could not read directory ${currentPath}`));
+        console.warn(error);
       }
     };
 
@@ -127,13 +128,13 @@ export class DirectoryConverter {
   ): Promise<void> {
     const result = await this.fileProcessor.processFile(filePath, {
       minify: options.minify,
-      escape: options.escape
+      escape: options.escape,
     });
 
     if (result) {
       const relativePath = path.relative(rootDir, filePath);
       const fileType = path.extname(filePath) || 'no-extension';
-      
+
       stats.processedFiles++;
       stats.totalSize += result.size;
       stats.fileTypes[fileType] = (stats.fileTypes[fileType] || 0) + 1;
@@ -143,7 +144,7 @@ export class DirectoryConverter {
         relativePath,
         content: result.content,
         size: result.size,
-        type: fileType
+        type: fileType,
       });
     } else {
       stats.skippedFiles++;
@@ -161,7 +162,7 @@ export class DirectoryConverter {
     let output = '';
 
     // Header
-    options.inputDirs.forEach(dir => {
+    options.inputDirs.forEach((dir) => {
       output += `=== CONVERSION from '${dir}' ===\n\n`;
     });
 
@@ -183,7 +184,7 @@ export class DirectoryConverter {
 
     // Files section
     output += '=== FILES ===\n\n';
-    
+
     for (const file of files) {
       output += `=== FILE: '${file.relativePath}' ===\n`;
       output += file.content;

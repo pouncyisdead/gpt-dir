@@ -46,12 +46,16 @@ program
           inputDirs.push(absolutePath);
         } catch (error) {
           console.error(chalk.red(`❌ Error: Directory ${dir} does not exist`));
+          console.warn(error);
           process.exit(1);
         }
       }
 
       // Parse boolean options with multiple flag support
-      const parseBooleanOption = (value: string | boolean | undefined, defaultValue: boolean = true): boolean => {
+      const parseBooleanOption = (
+        value: string | boolean | undefined,
+        defaultValue: boolean = true
+      ): boolean => {
         if (value === undefined) return defaultValue;
         if (typeof value === 'boolean') return value;
         if (typeof value === 'string') {
@@ -67,7 +71,7 @@ program
         minify: parseBooleanOption(options.minify || options.minifyFlag),
         escape: parseBooleanOption(options.escape || options.escapeFlag),
         tree: parseBooleanOption(options.tree || options.treeFlag),
-        clean: options.clean || false
+        clean: options.clean || false,
       };
 
       console.log(chalk.blue('🔧 Configuration:'));
@@ -86,13 +90,14 @@ program
           await fs.rm(conversionOptions.outputDir, { recursive: true, force: true });
         } catch (error) {
           // Directory might not exist, that's OK
+          console.warn(chalk.red(`❌ Warn: Directory might not exist`));
+          console.log(error);
         }
       }
 
       // Perform conversion
       const converter = new DirectoryConverter();
       await converter.convert(conversionOptions);
-
     } catch (error) {
       console.error(chalk.red('❌ Conversion failed:'));
       console.error(chalk.red(error instanceof Error ? error.message : String(error)));

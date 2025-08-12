@@ -79,6 +79,7 @@ program
             }
             catch (error) {
                 console.error(chalk_1.default.red(`❌ Error: Directory ${dir} does not exist`));
+                console.warn(error);
                 process.exit(1);
             }
         }
@@ -100,7 +101,7 @@ program
             minify: parseBooleanOption(options.minify || options.minifyFlag),
             escape: parseBooleanOption(options.escape || options.escapeFlag),
             tree: parseBooleanOption(options.tree || options.treeFlag),
-            clean: options.clean || false
+            clean: options.clean || false,
         };
         console.log(chalk_1.default.blue('🔧 Configuration:'));
         console.log(chalk_1.default.gray(`   Input directories: ${conversionOptions.inputDirs.join(', ')}`));
@@ -118,6 +119,8 @@ program
             }
             catch (error) {
                 // Directory might not exist, that's OK
+                console.warn(chalk_1.default.red(`❌ Warn: Directory might not exist`));
+                console.log(error);
             }
         }
         // Perform conversion

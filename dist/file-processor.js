@@ -41,10 +41,34 @@ class FileProcessor {
     constructor() {
         this.maxFileSize = 1024 * 1024; // 1MB
         this.excludedExtensions = new Set([
-            '.exe', '.dll', '.so', '.dylib', '.zip', '.tar', '.gz', '.rar',
-            '.jpg', '.jpeg', '.png', '.gif', '.bmp', '.ico', '.tiff',
-            '.mp3', '.mp4', '.avi', '.mov', '.wmv', '.flv',
-            '.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx'
+            '.exe',
+            '.dll',
+            '.so',
+            '.dylib',
+            '.zip',
+            '.tar',
+            '.gz',
+            '.rar',
+            '.jpg',
+            '.jpeg',
+            '.png',
+            '.gif',
+            '.bmp',
+            '.ico',
+            '.tiff',
+            '.mp3',
+            '.mp4',
+            '.avi',
+            '.mov',
+            '.wmv',
+            '.flv',
+            '.pdf',
+            '.doc',
+            '.docx',
+            '.xls',
+            '.xlsx',
+            '.ppt',
+            '.pptx',
         ]);
     }
     async processFile(filePath, options) {
@@ -69,7 +93,7 @@ class FileProcessor {
             }
             return {
                 content,
-                size: originalSize
+                size: originalSize,
             };
         }
         catch (error) {
@@ -101,29 +125,77 @@ class FileProcessor {
             'application/javascript',
             'application/typescript',
             'application/x-yaml',
-            'application/x-sh'
+            'application/x-sh',
         ];
-        return textTypes.some(type => mimeType.includes(type));
+        return textTypes.some((type) => mimeType.includes(type));
     }
     isTextFile(filePath) {
         const ext = path.extname(filePath).toLowerCase();
         // Known text file extensions
         const textExtensions = new Set([
-            '.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.txt', '.html', '.htm',
-            '.css', '.scss', '.sass', '.less', '.xml', '.yaml', '.yml', '.toml',
-            '.ini', '.conf', '.config', '.env', '.gitignore', '.gitattributes',
-            '.py', '.java', '.c', '.cpp', '.h', '.hpp', '.cs', '.php', '.rb',
-            '.go', '.rs', '.swift', '.kt', '.scala', '.sh', '.bash', '.zsh',
-            '.fish', '.ps1', '.bat', '.cmd', '.sql', '.r', '.m', '.pl', '.lua',
-            '.vim', '.dockerfile', '.makefile', '.cmake', '.gradle', '.maven'
+            '.js',
+            '.jsx',
+            '.ts',
+            '.tsx',
+            '.json',
+            '.md',
+            '.txt',
+            '.html',
+            '.htm',
+            '.css',
+            '.scss',
+            '.sass',
+            '.less',
+            '.xml',
+            '.yaml',
+            '.yml',
+            '.toml',
+            '.ini',
+            '.conf',
+            '.config',
+            '.env',
+            '.gitignore',
+            '.gitattributes',
+            '.py',
+            '.java',
+            '.c',
+            '.cpp',
+            '.h',
+            '.hpp',
+            '.cs',
+            '.php',
+            '.rb',
+            '.go',
+            '.rs',
+            '.swift',
+            '.kt',
+            '.scala',
+            '.sh',
+            '.bash',
+            '.zsh',
+            '.fish',
+            '.ps1',
+            '.bat',
+            '.cmd',
+            '.sql',
+            '.r',
+            '.m',
+            '.pl',
+            '.lua',
+            '.vim',
+            '.dockerfile',
+            '.makefile',
+            '.cmake',
+            '.gradle',
+            '.maven',
         ]);
         return textExtensions.has(ext);
     }
     minifyContent(content) {
         return content
             .split('\n')
-            .map(line => line.trim())
-            .filter(line => line.length > 0)
+            .map((line) => line.trim())
+            .filter((line) => line.length > 0)
             .join('\n');
     }
     escapeContent(content) {
@@ -137,15 +209,27 @@ class FileProcessor {
     }
     shouldExcludeDirectory(dirName) {
         const excludedDirs = new Set([
-            'node_modules', '.git', '.svn', '.hg', 'dist', 'build',
-            'coverage', '.nyc_output', '.DS_Store', 'Thumbs.db'
+            'node_modules',
+            '.git',
+            '.svn',
+            '.hg',
+            'dist',
+            'build',
+            'coverage',
+            '.nyc_output',
+            '.DS_Store',
+            'Thumbs.db',
         ]);
         return excludedDirs.has(dirName) || dirName.startsWith('.');
     }
     shouldExcludeFile(fileName) {
         const excludedFiles = new Set([
-            '.DS_Store', 'Thumbs.db', '.gitignore', '.gitkeep',
-            'package-lock.json', 'yarn.lock'
+            '.DS_Store',
+            'Thumbs.db',
+            '.gitignore',
+            '.gitkeep',
+            'package-lock.json',
+            'yarn.lock',
         ]);
         return excludedFiles.has(fileName) || fileName.startsWith('.');
     }

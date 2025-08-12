@@ -57,7 +57,7 @@ class DirectoryConverter {
             processedFiles: 0,
             skippedFiles: 0,
             fileTypes: {},
-            totalSize: 0
+            totalSize: 0,
         };
         const allFiles = [];
         let tree = '';
@@ -81,7 +81,7 @@ class DirectoryConverter {
                     format: chalk_1.default.cyan('{bar}') + ' | {percentage}% | {value}/{total} files',
                     barCompleteChar: '█',
                     barIncompleteChar: '░',
-                    hideCursor: true
+                    hideCursor: true,
                 });
                 this.progressBar.start(files.length, 0);
             }
@@ -107,7 +107,7 @@ class DirectoryConverter {
             files: allFiles,
             tree,
             startTime,
-            endTime
+            endTime,
         };
     }
     async collectFiles(dirPath) {
@@ -132,6 +132,7 @@ class DirectoryConverter {
             }
             catch (error) {
                 console.warn(chalk_1.default.yellow(`Warning: Could not read directory ${currentPath}`));
+                console.warn(error);
             }
         };
         await traverse(dirPath);
@@ -140,7 +141,7 @@ class DirectoryConverter {
     async processFile(filePath, rootDir, options, stats, allFiles) {
         const result = await this.fileProcessor.processFile(filePath, {
             minify: options.minify,
-            escape: options.escape
+            escape: options.escape,
         });
         if (result) {
             const relativePath = path.relative(rootDir, filePath);
@@ -153,7 +154,7 @@ class DirectoryConverter {
                 relativePath,
                 content: result.content,
                 size: result.size,
-                type: fileType
+                type: fileType,
             });
         }
         else {
@@ -163,7 +164,7 @@ class DirectoryConverter {
     generateOutput(options, stats, files, tree, startTime, endTime) {
         let output = '';
         // Header
-        options.inputDirs.forEach(dir => {
+        options.inputDirs.forEach((dir) => {
             output += `=== CONVERSION from '${dir}' ===\n\n`;
         });
         // Details section
