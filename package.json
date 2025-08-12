@@ -1,0 +1,48 @@
+{
+  "name": "gpt-directory-converter",
+  "version": "0.0.0-0",
+  "description": "A Node.js CLI tool that converts directories into structured text files optimized for AI processing",
+  "main": "dist/gpt-dir.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/gpt-dir.ts",
+    "dev": "tsx src/gpt-dir.ts -i ./src -o ./output",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "bin": {
+    "gpt-dir": "dist/gpt-dir.js"
+  },
+  "keywords": [
+    "cli",
+    "directory",
+    "converter",
+    "ai",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "commander": "^11.1.0",
+    "mime-types": "^2.1.35"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.33.0",
+    "@types/cli-progress": "^3.11.6",
+    "@types/mime-types": "^2.1.4",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.39.1",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.3"
+  }
+}

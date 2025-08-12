@@ -1,0 +1,1 @@
+{"version":3,"file":"tree-generator.d.ts","sourceRoot":"","sources":["../src/tree-generator.ts"],"names":[],"mappings":"AAIA,qBAAa,aAAa;IACxB,OAAO,CAAC,aAAa,CAAuB;IAEtC,YAAY,CAAC,QAAQ,EAAE,MAAM,EAAE,MAAM,GAAE,MAAW,EAAE,MAAM,GAAE,OAAc,GAAG,OAAO,CAAC,MAAM,CAAC;YAuCpF,SAAS;IAsBvB,OAAO,CAAC,WAAW;CA4CpB"}
