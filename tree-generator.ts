@@ -1,6 +1,7 @@
 import * as console from 'node:console';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
+
 import { FileProcessor } from './file-processor.ts';
 
 export class TreeGenerator {
@@ -18,7 +19,7 @@ export class TreeGenerator {
     const connector = isLast ? '└── ' : '├── ';
     const icon = stats.isDirectory() ? '📁' : this.getFileIcon(name);
 
-    result += `${prefix}${connector}${icon} ${name}/\n`;
+    result += `${prefix}${connector}${icon} ${name}\n`;
 
     if (stats.isDirectory()) {
       if (this.fileProcessor.shouldExcludeDirectory(name) && prefix !== '') {

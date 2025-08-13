@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
-import { Command } from 'commander';
 import console from 'node:console';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import chalk from 'npm:chalk';
+import { Command } from 'npm:commander';
+
 import { DirectoryConverter } from './converter.ts';
 import { ConversionOptions } from './types.ts';
 

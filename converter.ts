@@ -1,11 +1,12 @@
+import console from 'node:console';
 import * as fs from 'node:fs/promises';
 import * as path from 'node:path';
-import chalk from 'chalk';
-import cliProgress from 'cli-progress';
-import { ConversionOptions, ConversionResult, FileStats, ProcessedFile } from './types.ts';
+import chalk from 'npm:chalk';
+import cliProgress from 'npm:cli-progress';
+
 import { FileProcessor } from './file-processor.ts';
 import { TreeGenerator } from './tree-generator.ts';
-import console from 'node:console';
+import { ConversionOptions, ConversionResult, FileStats, ProcessedFile } from './types.ts';
 
 export class DirectoryConverter {
   private fileProcessor = new FileProcessor();

@@ -1,6 +1,5 @@
-/// <reference lib="deno.ns" />
-
 import { assert, assertEquals } from 'jsr:@std/assert';
+
 import { DirectoryConverter } from './converter.ts';
 import { ConversionOptions } from './types.ts';
 
