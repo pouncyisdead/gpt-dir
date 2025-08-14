@@ -1,7 +1,6 @@
-# gpt-dir (Deno-first)
+# gpt-dir
 
-Convert one or more directories into a single **structured text** (or JSON) artifact, optimized for
-AI ingestion and code review.
+Convert one or more directories into a **structured text** (or JSON) artifact, optimized for AI ingestion and code review.
 
 ## Quick start
 
