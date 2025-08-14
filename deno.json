@@ -1,8 +1,28 @@
 {
   "tasks": {
-    "dev": "deno run --watch main.ts"
+    "dev": "deno run --watch -A src/main.ts",
+    "test": "deno test -A",
+    "fmt": "deno fmt",
+    "lint": "deno lint",
+    "build": "deno compile -A -o gpt-dir src/main.ts"
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 100,
+    "semiColons": true,
+    "singleQuote": false,
+    "proseWrap": "always"
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
   },
   "imports": {
-    "@std/assert": "jsr:@std/assert@1"
+    "@std/assert": "jsr:@std/assert@^1.0.13",
+    "@std/async": "jsr:@std/async@^1.0.6",
+    "@std/encoding": "jsr:@std/encoding@^1.0.5",
+    "@std/fs": "jsr:@std/fs@^1.0.4",
+    "@std/path": "jsr:@std/path@^1.0.6"
   }
 }
